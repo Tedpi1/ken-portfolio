@@ -46,9 +46,9 @@ function displayPortfolio(portfolioItems){
         return`
             <div class="portfolio-items">
                                 <div class="portfolio-item-inner">
-                                    <a href="${item.link}">
+                                    
                                         <img src=${item.img} alt="">
-                                    </a>
+                                    
                                 </div>
                             </div>
         `
