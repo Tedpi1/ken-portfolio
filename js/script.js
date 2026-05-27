@@ -1,49 +1,58 @@
-const portfolioItem=[
-    {
-        id:1,
-        category:"web",
-        img:"./images/portfolio/1.jpg",
-        
-    },
-    {
-        id:1,
-        category:"graphic",
-        img:"./images/portfolio/2.jpg",
-        
-    },
-    {
-        id:1,
-        category:"designing",
-        img:"./images/portfolio/3.jpg",
-        
-    },
-    {
-        id:1,
-        category:"database",
-        img:"./images/portfolio/4.jpg",
-        
-    },
-    {
-        id:1,
-        category:"database",
-        img:"./images/portfolio/5.jpg",
-        
-    },
-    {
-        id:1,
-        category:"database",
-        img:"./images/portfolio/6.jpg",
-        
-    }
-]
-const portfolio=document.querySelector(".portfolio-items-section");
-window.addEventListener("DOMContentLoaded",function(){
-    displayPortfolio(portfolioItem)
-})
-function displayPortfolio(portfolioItems){
-    let displayPortfolio=portfolioItems.map(function(item){
-        // console.log(item)
-        return`
+const portfolioItem = [
+  {
+    id: 1,
+    category: "web",
+    img: "./images/portfolio/1.jpg",
+  },
+  {
+    id: 1,
+    category: "graphic",
+    img: "./images/portfolio/2.jpg",
+  },
+  {
+    id: 1,
+    category: "designing",
+    img: "./images/portfolio/3.jpg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/4.jpg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/5.jpg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/6.jpg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/8.jpeg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/9.jpeg",
+  },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/10.jpeg",
+  },
+];
+const portfolio = document.querySelector(".portfolio-items-section");
+window.addEventListener("DOMContentLoaded", function () {
+  displayPortfolio(portfolioItem);
+});
+function displayPortfolio(portfolioItems) {
+  let displayPortfolio = portfolioItems.map(function (item) {
+    // console.log(item)
+    return `
             <div class="portfolio-items">
                                 <div class="portfolio-item-inner">
                                     
@@ -51,37 +60,37 @@ function displayPortfolio(portfolioItems){
                                     
                                 </div>
                             </div>
-        `
-    })
-    displayPortfolio=displayPortfolio.join("")
-    portfolio.innerHTML=displayPortfolio
-    // console.log(displayPortfolio)
+        `;
+  });
+  displayPortfolio = displayPortfolio.join("");
+  portfolio.innerHTML = displayPortfolio;
+  // console.log(displayPortfolio)
 }
 //filter icons
-const filterIcon=document.querySelectorAll(".filter-icon, .filter-btn");
-filterIcon.forEach(function(icon){
-    icon.addEventListener("click",function(e){
-        const category=e.currentTarget.dataset.id
-        const clean=portfolioItem.filter(function(item){
-            // console.log(item.category)
-            // return the items based on the icon selected
-            if(item.category===category){
-                return item;   
-            }
-        })
-        // console.log(clean)
-        //to handle all
-        if(category==="all"){
-            displayPortfolio(portfolioItem)
-        }else{
-            displayPortfolio(clean)
-        }
-    })
-})
+const filterIcon = document.querySelectorAll(".filter-icon, .filter-btn");
+filterIcon.forEach(function (icon) {
+  icon.addEventListener("click", function (e) {
+    const category = e.currentTarget.dataset.id;
+    const clean = portfolioItem.filter(function (item) {
+      // console.log(item.category)
+      // return the items based on the icon selected
+      if (item.category === category) {
+        return item;
+      }
+    });
+    // console.log(clean)
+    //to handle all
+    if (category === "all") {
+      displayPortfolio(portfolioItem);
+    } else {
+      displayPortfolio(clean);
+    }
+  });
+});
 // Define your date of birth (year, month, day)
 const birthYear = 2004; // Replace with your year of birth
-const birthMonth = 8;   // Replace with your month of birth (1-12)
-const birthDay = 8;    // Replace with your day of birth (1-31)
+const birthMonth = 8; // Replace with your month of birth (1-12)
+const birthDay = 8; // Replace with your day of birth (1-31)
 
 // Get the current date
 const today = new Date();
@@ -93,13 +102,15 @@ const currentDay = today.getDate();
 let age = currentYear - birthYear;
 
 // Adjust age if the birthday hasn't occurred yet this year
-if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
-    age--;
+if (
+  currentMonth < birthMonth ||
+  (currentMonth === birthMonth && currentDay < birthDay)
+) {
+  age--;
 }
 
 // Display the age in the HTML
 document.getElementById("age").textContent = age;
-
 
 //how long i have been coding in years
 const startYear = 2020; // Replace with the year you started coding
@@ -111,125 +122,124 @@ const music = currentYear2 - photographyStartYear;
 document.getElementById("coding").textContent = yearsCoding;
 document.getElementById("code").textContent = yearsCoding;
 
-
-const starYear=2017
+const starYear = 2017;
 const currentYear3 = new Date().getFullYear();
 const yearsCoding2 = currentYear3 - starYear;
 document.getElementById("cod").textContent = yearsCoding2;
-document.getElementById("year").textContent = currentYear
-document.getElementById("des").textContent = currentYear
-document.getElementById("code4").textContent = currentYear
-
+document.getElementById("year").textContent = currentYear;
+document.getElementById("des").textContent = currentYear;
+document.getElementById("code4").textContent = currentYear;
 
 //typing animation
-const text =[
-    "Videographer",
-    "Photographer",
-    "Graphic Designer",
-    "Video Editor",
-    "Photo Editor"
+const text = [
+  "Videographer",
+  "Photographer",
+  "Graphic Designer",
+  "Video Editor",
+  "Photo Editor",
 ];
 
 let count = 0;
 let index = 0;
-let currentText = '';
-let letter = '';
+let currentText = "";
+let letter = "";
 
-(function type(){
-    if(count === text.length){
-        count = 0;
-    }
+(function type() {
+  if (count === text.length) {
+    count = 0;
+  }
 
-    currentText = text[count];
-    letter = currentText.slice(0, ++index);
+  currentText = text[count];
+  letter = currentText.slice(0, ++index);
 
-    document.querySelector('.typing').textContent = letter;
+  document.querySelector(".typing").textContent = letter;
 
-    if(letter.length === currentText.length){
-        count++; 
-        index = 0;
-    }
+  if (letter.length === currentText.length) {
+    count++;
+    index = 0;
+  }
 
-    setTimeout(type, 300);
-}
-)();
+  setTimeout(type, 300);
+})();
 // aside
-const nav = document.querySelector('.nav')
-    navList=nav.querySelectorAll('li'),
-    totalNavList = navList.length;
-    allSection = document.querySelectorAll('.section'),
-    totalSection = allSection.length;
-    for(let i=0; i<totalNavList; i++){
-        // console.log(navList[i])
-        const a = navList[i].querySelector('a');
-        // console.log(a)
-        a.addEventListener('click', function(){
-            // console.log(this)
-            removeBackSection()
-            for(let j=0; j<totalNavList; j++){
-                if(navList[j].querySelector("a").classList.contains("active")){
-                    // console.log("back-section"+navList[j].querySelector("a"))
-                    // allSection[j].classList.add('back-section')
-                    addBackSection(j)
-                }
-                navList[j].querySelector('a').classList.remove('active');
-            }
-            this.classList.add('active');
-            showSection(this);
-            if(window.innerWidth < 1200){
-                asideSectionTogglerBtn();
-            }
-        })
+const nav = document.querySelector(".nav");
+((navList = nav.querySelectorAll("li")), (totalNavList = navList.length));
+((allSection = document.querySelectorAll(".section")),
+  (totalSection = allSection.length));
+for (let i = 0; i < totalNavList; i++) {
+  // console.log(navList[i])
+  const a = navList[i].querySelector("a");
+  // console.log(a)
+  a.addEventListener("click", function () {
+    // console.log(this)
+    removeBackSection();
+    for (let j = 0; j < totalNavList; j++) {
+      if (navList[j].querySelector("a").classList.contains("active")) {
+        // console.log("back-section"+navList[j].querySelector("a"))
+        // allSection[j].classList.add('back-section')
+        addBackSection(j);
+      }
+      navList[j].querySelector("a").classList.remove("active");
     }
-    //dislay each section
-    function showSection(element){
-        for(let i=0; i<totalSection; i++){
-            allSection[i].classList.remove('active');
-        }
-        const target = element.getAttribute('href').slice(1);
-        document.querySelector(`#${target}`).classList.add('active');
-        // console.log(element);
+    this.classList.add("active");
+    showSection(this);
+    if (window.innerWidth < 1200) {
+      asideSectionTogglerBtn();
     }
-    function addBackSection(num){
-        allSection[num].classList.add('back-section')
+  });
+}
+//dislay each section
+function showSection(element) {
+  for (let i = 0; i < totalSection; i++) {
+    allSection[i].classList.remove("active");
+  }
+  const target = element.getAttribute("href").slice(1);
+  document.querySelector(`#${target}`).classList.add("active");
+  // console.log(element);
+}
+function addBackSection(num) {
+  allSection[num].classList.add("back-section");
+}
+function removeBackSection() {
+  for (let i = 0; i < totalSection; i++) {
+    allSection[i].classList.remove("back-section");
+  }
+}
+function updateNav(element) {
+  // console.log(element.getAttribute('href').slice('#')[1])
+  for (let i = 0; i < totalNavList; i++) {
+    navList[i].querySelector("a").classList.remove("active");
+    const target = element.getAttribute("href").slice("#")[1];
+    if (
+      target ===
+      navList[i].querySelector("a").getAttribute("href").slice("#")[1]
+    ) {
+      navList[i].querySelector("a").classList.add("active");
     }
-    function removeBackSection(){
-        for(let i=0; i<totalSection; i++){
-            allSection[i].classList.remove('back-section');
-        }
-    }
-    function updateNav(element){
-        // console.log(element.getAttribute('href').slice('#')[1])
-        for(let i=0; i<totalNavList; i++){
-            navList[i].querySelector('a').classList.remove('active');
-            const target= element.getAttribute('href').slice('#')[1];
-            if(target===navList[i].querySelector('a').getAttribute('href').slice("#")[1]){
-                navList[i].querySelector('a').classList.add('active');;
-            }
-        }
-    }
-    document.querySelector('.hire-me').addEventListener('click', function(){
-        // console.log(this)
-        const sectionIndex=this.getAttribute('data-section-index');
-        // console.log(sectionIndex)
+  }
+}
+document.querySelector(".hire-me").addEventListener("click", function () {
+  // console.log(this)
+  const sectionIndex = this.getAttribute("data-section-index");
+  // console.log(sectionIndex)
 
-        showSection(this)
-        updateNav(this)
-        removeBackSection()
-        addBackSection(sectionIndex)
-    })
+  showSection(this);
+  updateNav(this);
+  removeBackSection();
+  addBackSection(sectionIndex);
+});
 
-    //active nav bar
-    const NavTogglerBtn= document.querySelector(".nav-toggler");
-        aside =document.querySelector(".aside");
-        NavTogglerBtn.addEventListener("click", ()=>{
-            asideSectionTogglerBtn()
-        })
-        function asideSectionTogglerBtn(){
-            aside.classList.toggle("change");
-            NavTogglerBtn.classList.toggle("change");
-            for(let i=0; i<totalSection; i++){
-                allSection[i].classList.toggle("change");
-            }
-        }
-        //click nav
+//active nav bar
+const NavTogglerBtn = document.querySelector(".nav-toggler");
+aside = document.querySelector(".aside");
+NavTogglerBtn.addEventListener("click", () => {
+  asideSectionTogglerBtn();
+});
+function asideSectionTogglerBtn() {
+  aside.classList.toggle("change");
+  NavTogglerBtn.classList.toggle("change");
+  for (let i = 0; i < totalSection; i++) {
+    allSection[i].classList.toggle("change");
+  }
+}
+//click nav
