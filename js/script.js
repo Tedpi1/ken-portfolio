@@ -44,6 +44,11 @@ const portfolioItem = [
     category: "database",
     img: "./images/portfolio/10.jpeg",
   },
+  {
+    id: 1,
+    category: "database",
+    img: "./images/portfolio/11.jpeg",
+  },
 ];
 const portfolio = document.querySelector(".portfolio-items-section");
 window.addEventListener("DOMContentLoaded", function () {
